@@ -1,0 +1,163 @@
+.upload {
+    display: inline-block;
+}
+
+.add-file {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    border: 1px dashed #aaa;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.file-trigger {
+    width: 80px;
+    height: 60px;
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 28px;
+    color: #999;
+}
+
+.file-upload-tip {
+    position: absolute;
+    text-align: center;
+    color: #aaa;
+    top: 60%;
+    font-size: 12px;
+    left: 0;
+    right: 0;
+}
+
+.image-preview {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    left: 0;
+    right: 0;
+
+    img {
+        max-width: 100%;
+        opacity: 0.5;
+    }
+}
+
+//已上传
+
+.attachments {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.uploaded-file {
+    position: relative;
+    margin: 10px;
+
+    .to-download-file {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        background: rgba(100, 0, 0, 0.2);
+        border-radius: 50%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .remove-uploaded-file {
+        position: absolute;
+        cursor: pointer;
+        z-index: 1;
+        top: 0;
+        right: 0;
+    }
+
+    .uploaded-file-type-icon {
+        position: relative;
+        text-align: center;
+        .img-type {
+            cursor: pointer;
+            width: 60px;
+        }
+    }
+
+    .uploaded-file-name {
+        margin-top: 10px;
+        text-align: center;
+        width: 80px;
+        word-wrap: break-word;
+    }
+
+    &.big {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@mixin svg-bg-common() {
+    display: inline-block;
+    background-size: cover;
+    vertical-align: bottom;
+}
+
+.file-svg {
+    @include svg-bg-common();
+    width: 60px;
+    height: 60px;
+    background-image: url(./file-type/unknown.png);
+}
+
+.excel-svg {
+    @include svg-bg-common();
+    width: 60px;
+    height: 60px;
+    background-image: url(./file-type/excel.png);
+}
+
+.ppt-svg {
+    @include svg-bg-common();
+    width: 60px;
+    height: 60px;
+    background-image: url(./file-type/ppt.png);
+}
+
+.txt-svg {
+    @include svg-bg-common();
+    width: 60px;
+    height: 60px;
+    background-image: url(./file-type/text.png);
+}
+
+.word-svg {
+    @include svg-bg-common();
+    width: 60px;
+    height: 60px;
+    background-image: url(./file-type/word.png);
+}
+
+.pdf-svg {
+    @include svg-bg-common();
+    width: 60px;
+    height: 60px;
+    background-image: url(./file-type/pdf.png);
+}
+
+.minus-red-svg {
+    @include svg-bg-common();
+    width: 16px;
+    height: 16px;
+    background-image: url(./svg/minus-red.svg);
+}
+
+.remove-svg {
+    @include svg-bg-common();
+    width: 14px;
+    height: 14px;
+    background-image: url(./svg/remove.svg);
+}
