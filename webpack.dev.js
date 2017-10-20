@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const handleModulePath = require('./tools/handleModulePath')
 
+const port = 3071
+
 module.exports = {
   entry: [
     'webpack-hot-middleware/client',
@@ -10,12 +12,12 @@ module.exports = {
   devServer: {
     hot: true,
     inline: true,
-    port: 3071
+    port: port
   },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: 'http://localhost:3021/static/',
+    publicPath: 'http://localhost:' + port + '/static/',
     chunkFilename: '[name].chunk.js'
   },
   resolve: {

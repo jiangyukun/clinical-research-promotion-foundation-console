@@ -26,13 +26,13 @@ body {
         flex-direction: column;
 
         .brand-name {
-            height: 90px;
+            height: 60px;
             color: #F3F6F5;
             background-color: #555C78;
             font-size: 20px;
-            img {
-                margin-top: -20px;
-            }
+            text-align: center;
+            padding-top: 20px;
+            letter-spacing: 5px;
         }
 
         .nav-container {
@@ -237,7 +237,7 @@ body {
 }
 
 .status-title {
-    font-weight:600;
+    font-weight: 600;
 }
 
 .my-status-dialog {

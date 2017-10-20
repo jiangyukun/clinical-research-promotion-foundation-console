@@ -3,7 +3,13 @@ import './antd/date-picker/style/'
 import './antd/tooltip/style/'
 import './antd/popover/style/'
 import './common.scss'
+import './components/button.scss'
 
 import '../components/query-filter/query-filter.scss'
+import '../components/fix-head-list/fix-head-list.scss'
+import '../components/search/search-box.scss'
+import '../components/nav/page-count-nav.scss'
 import '../containers/app.scss'
+import '../containers/1-1-question-list/question-list.scss'
+import '../containers/1-2-answer-list/answer-list.scss'
 

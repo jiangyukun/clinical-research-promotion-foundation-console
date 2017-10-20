@@ -20,9 +20,7 @@ const vendors = [
   'react-router',
   'react-router-dom',
   'react-router-redux',
-  'redux',
-  'redux-saga',
-  'antd/lib/date-picker'
+  'redux'
 ]
 
 module.exports = {

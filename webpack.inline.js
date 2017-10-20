@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const handleModulePath = require('./tools/handleModulePath')
 
 const ipAddress = 'localhost'
-const port = 3021
+const port = 3071
 
 module.exports = {
   entry: [

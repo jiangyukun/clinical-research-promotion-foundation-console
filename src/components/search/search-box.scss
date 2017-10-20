@@ -1,0 +1,16 @@
+
+.search-box {
+    display: inline-block;
+    .search-input {
+        width: 200px;
+        border: 1px solid #b9def0;
+        padding: 4px 10px;
+        border-radius: 4px;
+    }
+
+    img {
+        vertical-align: middle;
+        width: 30px;
+        cursor: pointer;
+    }
+}

@@ -22,7 +22,7 @@ function toIndex(req, res) {
     res.sendFile(__dirname + '/index.html')
 }
 
-app.get('/dev/node-auditing', toIndex)
+app.get('/dev/question-list', toIndex)
 
 app.listen(port, function (error) {
     if (error) {

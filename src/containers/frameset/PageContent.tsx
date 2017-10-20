@@ -26,6 +26,14 @@ class PageContent extends React.Component<PageContentProps> {
     }
   }
 
+  componentDidCatch() {
+    return (
+      <div className="page-content">
+        出错啦
+      </div>
+    )
+  }
+
   render() {
     const {match} = this.props
     const {questionList, answerList} = pages

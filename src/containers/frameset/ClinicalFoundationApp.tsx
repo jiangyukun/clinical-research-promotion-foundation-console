@@ -11,12 +11,7 @@ import Header from './Header'
 import PageContent from './PageContent'
 import Modules from './Modules'
 
-import Data from '../../core/interface/Data'
-import pages from '../../core/pages'
-import {getPath} from '../../core/env'
-
 interface SimoCrmAppProps {
-  user: any
   message: any
   changeMessageStatus: any
   match: any
@@ -35,7 +30,7 @@ class ClinicalFoundationApp extends React.Component<SimoCrmAppProps> {
         <MessageManage messageList={this.props.message.msgQueue} changeMessageStatus={this.props.changeMessageStatus}/>
         <aside>
           <header className="brand-name">
-            <img src={require('../images/simo.png')}/>
+            CRPF
           </header>
           <nav className="nav-container">
             <Modules
@@ -43,9 +38,7 @@ class ClinicalFoundationApp extends React.Component<SimoCrmAppProps> {
           </nav>
         </aside>
         <main>
-          <Header
-            user={this.props.user}
-          />
+          <Header/>
           <PageContent match={this.props.match}/>
         </main>
       </div>
@@ -56,7 +49,7 @@ class ClinicalFoundationApp extends React.Component<SimoCrmAppProps> {
 function mapStateToProps(state) {
   let currentPath = state.router.location.pathname
   return {
-    ...state['app'],
+    ...state.app,
     message: state.message,
     recentOpenList: state.recentOpenList,
     newUserStatus: state.newUserStatus,

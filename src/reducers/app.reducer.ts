@@ -3,11 +3,11 @@
  */
 import {fromJS} from 'immutable'
 
-import {APP, TODO_REMIND} from '../core/constants/types'
+import {APP} from '../core/constants/types'
 import phase from '../core/constants/phase'
 
 const initValue = {
-  user: null,
+  user: {},
 
 }
 
@@ -16,10 +16,6 @@ export default function app(iState = fromJS(initValue), action) {
   switch (action.type) {
     case APP.INIT_USER:
       nextIState = nextIState.set('user', action.user)
-      break
-
-    case TODO_REMIND.FETCH_UNREAD_REMIND_AMOUNT + phase.SUCCESS:
-      nextIState = nextIState.set('unreadRemindAmount', action.data)
       break
   }
 

@@ -2,6 +2,7 @@
  * Created by jiangyukun on 2017/4/27.
  */
 import React from 'react'
+import addCommonFunction from '../../core/hoc/addCommonFunction'
 
 interface ChunkProps {
   load: any
@@ -14,7 +15,7 @@ class Chunk extends React.Component<ChunkProps> {
 
   componentDidMount() {
     this.props.load(lazyComponent => {
-      const Component = lazyComponent.default
+      const Component = addCommonFunction(lazyComponent.default)
       this.setState({lazyComponent: Component})
     })
   }

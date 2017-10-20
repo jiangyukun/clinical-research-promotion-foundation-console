@@ -1,0 +1,18 @@
+
+.btn {
+    cursor: pointer;
+    padding: 4px 10px;
+    background: #00a854;
+    color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+    & ~ .btn {
+        margin-left: 8px;
+    }
+
+    &[disabled] {
+        background-color: #dddddd;
+    }
+}
+
