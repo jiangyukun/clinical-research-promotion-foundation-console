@@ -5,16 +5,16 @@ export let context = ''
 
 export function getPathPrefix() {
   if (process.env.NODE_ENV == 'production') {
-    return context + '/prod/'
+    return context + ''
   }
   if (process.env.NODE_ENV == 'inline') {
-    return context + '/inline/'
+    return context + '/inline'
   }
   if (process.env.NODE_ENV == 'dev') {
-    return '/dev/'
+    return '/dev'
   }
 }
 
 export function getPath(page) {
-  return getPathPrefix() + page
+  return getPathPrefix() + '/' + page
 }

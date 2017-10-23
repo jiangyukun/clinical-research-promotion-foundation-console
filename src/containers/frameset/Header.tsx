@@ -19,8 +19,12 @@ class Header extends React.Component<HeaderProps> {
   }
 
   logout = () => {
-    _get('/user/v1/logout')
-    location.href = `${context}/login`
+    _get(context + '/backend/user/v1/logout')
+    if (location.href.indexOf('inline') != -1) {
+      location.href = `${context}/inline/login`
+    } else {
+      location.href = `${context}/login`
+    }
   }
 
   render() {
@@ -35,7 +39,7 @@ class Header extends React.Component<HeaderProps> {
               </div>
               <CssTransition visible={this.state.active} timeout={300}>
                 <ul className="dropdown-item-container">
-                  <li className="dropdown-item btn" onClick={this.logout}>退出登录</li>
+                  <li className="dropdown-item is-btn" onClick={this.logout}>退出登录</li>
                 </ul>
               </CssTransition>
             </div>

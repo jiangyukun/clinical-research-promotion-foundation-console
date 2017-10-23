@@ -15,7 +15,7 @@ interface RootProps {
   history: any
 }
 
-class Root extends React.PureComponent<RootProps, any> {
+class Root extends React.PureComponent<RootProps> {
   render() {
     return (
       <Provider store={this.props.store}>

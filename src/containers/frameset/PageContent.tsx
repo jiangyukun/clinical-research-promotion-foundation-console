@@ -37,10 +37,12 @@ class PageContent extends React.Component<PageContentProps> {
   render() {
     const {match} = this.props
     const {questionList, answerList} = pages
+    let prefix = match.url
+    if (prefix == '/') prefix = ''
     return (
       <div className="page-content">
-        <Route path={`${match.url}/${questionList}`} component={this.mapper[questionList]}/>
-        <Route path={`${match.url}/${answerList}`} component={this.mapper[answerList]}/>
+        <Route path={`${prefix}/${questionList}`} component={this.mapper[questionList]}/>
+        <Route path={`${prefix}/${answerList}`} component={this.mapper[answerList]}/>
       </div>
     )
   }

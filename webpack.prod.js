@@ -1,12 +1,8 @@
-/**
- *
- * @type {webpack}
- */
 const webpack = require('webpack')
 const moment = require('moment')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const context = '/simo-crm'
+const context = ''
 
 const handleModulePath = require('./tools/handleModulePath')
 
@@ -17,9 +13,9 @@ module.exports = {
     './src/index.tsx'
   ],
   output: {
-    path: __dirname + '/build/prod/',
+    path: __dirname + '/build/',
     filename: 'bundle' + '.min.js',
-    publicPath: `${context}/crm/build/prod/`,
+    publicPath: `${context}/console/build/`,
     chunkFilename: '[name].chunk.js?v=' + moment().format('YYYY-MM-DD')
   },
   resolve: {
@@ -43,10 +39,6 @@ module.exports = {
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
     new ExtractTextPlugin('style' + '.min.css'),
-    new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: require('./manifest.json')
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     }),
