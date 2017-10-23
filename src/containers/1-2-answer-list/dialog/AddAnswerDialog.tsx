@@ -4,7 +4,7 @@
 import React from 'react'
 import Modal from 'wj-appcore/modal'
 import {Row, Part, Line} from 'wj-appcore/layout'
-import TextArea from 'wj-appcore/form/TextArea'
+import LimitTextArea from 'wj-appcore/form/limit/LimitTextArea'
 import Form from 'wj-appcore/form/Form'
 import Confirm from 'wj-appcore/common/Confirm'
 import ConfirmOrClose from 'wj-appcore/common/ConfirmOrClose'
@@ -32,8 +32,8 @@ class AddAnswerDialog extends React.Component<AddAnswerDialogProps> {
   addAnswer = () => {
     this.props.addAnswer({
       "questionContent": this.state.question,
-      "answerContent": this.state.question,
-      "remark": this.state.question,
+      "answerContent": this.state.answer,
+      "remark": this.state.remark
     })
   }
 
@@ -62,9 +62,10 @@ class AddAnswerDialog extends React.Component<AddAnswerDialogProps> {
             <Row>
               <label>问题</label>
               <Part>
-              <TextArea value={this.state.question} onChange={e => this.setState({question: e.target.value})}
-                        required={true} rows={5} name="question"
-              />
+                <LimitTextArea
+                  required={true} rows={5} name="question" placeholder="请输入问题" limit={50} onExceed={() => null}
+                  value={this.state.question} onChange={e => this.setState({question: e.target.value})}
+                />
               </Part>
             </Row>
 
@@ -73,9 +74,9 @@ class AddAnswerDialog extends React.Component<AddAnswerDialogProps> {
             <Row>
               <label>回答</label>
               <Part>
-              <TextArea
-                rows={5} required={true} name="answer"
-                value={this.state.answer} onChange={e => this.setState({answer: e.target.value})}/>
+                <LimitTextArea
+                  rows={5} required={true} limit={200} name="answer" placeholder="请输入回答" onExceed={() => null}
+                  value={this.state.answer} onChange={e => this.setState({answer: e.target.value})}/>
               </Part>
             </Row>
             <Line/>
@@ -83,16 +84,16 @@ class AddAnswerDialog extends React.Component<AddAnswerDialogProps> {
             <Row>
               <label>备注</label>
               <Part>
-              <TextArea
-                rows={5}
-                value={this.state.remark} onChange={e => this.setState({remark: e.target.value})}/>
+                <LimitTextArea
+                  rows={5} placeholder="请输入备注" limit={50} onExceed={() => null}
+                  value={this.state.remark} onChange={e => this.setState({remark: e.target.value})}/>
               </Part>
             </Row>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <ConfirmOrClose
-            disabled={!this.state.question || !this.state.answer}
+            disabled={!this.state.valid}
             onCancel={this.close}
             onConfirm={() => this.setState({showAddConfirm: true})}
           />

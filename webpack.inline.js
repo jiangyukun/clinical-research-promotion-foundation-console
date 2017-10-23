@@ -2,7 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const handleModulePath = require('./tools/handleModulePath')
 
-const ipAddress = 'localhost'
 const port = 3071
 
 module.exports = {
@@ -12,7 +11,6 @@ module.exports = {
   devServer: {
     hot: true,
     inline: true,
-    host: ipAddress,
     port: port,
     headers: {
       'Access-Control-Allow-Origin': '*'
@@ -21,7 +19,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: 'http://' + ipAddress + ':' + port + '/static/',
+    publicPath: 'http://localhost:' + port + '/static/',
     chunkFilename: '[name].chunk.js'
   },
   resolve: {

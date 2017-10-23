@@ -10,6 +10,9 @@ export function getDateStr(d) {
   if (typeof d == 'number') {
     return moment(d).format('YYYY-MM-DD')
   }
+  if (typeof d == 'string') {
+    return moment(d).format('YYYY-MM-DD HH:mm')
+  }
   return d.format('YYYY-MM-DD')
 }
 
@@ -18,6 +21,9 @@ export function getDateTimeStr(d) {
     return null
   }
   if (typeof d == 'number') {
+    return moment(d).format('YYYY-MM-DD HH:mm')
+  }
+  if (typeof d == 'string') {
     return moment(d).format('YYYY-MM-DD HH:mm')
   }
   return d.format('YYYY-MM-DD HH:mm')

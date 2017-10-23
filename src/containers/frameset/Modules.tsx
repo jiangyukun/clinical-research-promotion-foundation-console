@@ -27,7 +27,7 @@ class Modules extends React.Component<ModulesProps> {
 
     return (
       <div className="modules">
-        <header onClick={() => this.setState({open: !this.state.open})}>功能</header>
+        <header onClick={() => this.setState({open: !this.state.open})}>问题管理</header>
 
         <CssTransition visible={this.state.open} timeout={500}>
           <main>

@@ -15,6 +15,7 @@ import {handleListData} from '../common/common'
 import CommonFunction from '../../core/interface/CommonFunction'
 import {ANSWER_LIST} from '../../core/constants/types'
 import UpdateAnswerDialog from './dialog/UpdateAnswerDialog'
+import HighLight from '../../components/txt/HighLight'
 
 interface AnswerListProps extends CommonFunction {
   fetchList: any
@@ -88,11 +89,13 @@ class AnswerList extends React.Component<AnswerListProps> {
           <button className="btn" onClick={() => this.setState({showAdd: true})}>新增</button>
           <button className="btn" disabled={this.state.index == -1} onClick={() => this.setState({showEdit: true})}>查看</button>
           <div className="pull-right">
-            <SearchBox value={this.state.searchKey} onChange={v => this.setState({searchKey: v})} search={() => this.toPage(0)}/>
+            <SearchBox
+              placeholder="请输入回答关键字"
+              value={this.state.searchKey} onChange={v => this.setState({searchKey: v})} search={() => this.toPage(0)}/>
           </div>
         </div>
 
-        <FixHeadList>
+        <FixHeadList total={total}>
           <FixHead>
             <FixHead.Item>问题</FixHead.Item>
             <FixHead.Item>回答</FixHead.Item>
@@ -107,8 +110,12 @@ class AnswerList extends React.Component<AnswerListProps> {
                   <FixRow key={item['answerId']}
                           onClick={() => this.setState({index})}
                           selected={this.state.index == index}>
-                    <FixRow.Item>{item['questionContent']}</FixRow.Item>
-                    <FixRow.Item>{item['answerContent']}</FixRow.Item>
+                    <FixRow.Item>
+                      <HighLight match={this.state.searchKey} txt={item['questionContent']}/>
+                    </FixRow.Item>
+                    <FixRow.Item>
+                      <HighLight match={this.state.searchKey} txt={item['answerContent']}/>
+                    </FixRow.Item>
                     <FixRow.Item>{item['createTime']}</FixRow.Item>
                     <FixRow.Item>{item['updateTime']}</FixRow.Item>
                     <FixRow.Item>{item['remark']}</FixRow.Item>
