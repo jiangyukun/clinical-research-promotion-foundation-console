@@ -16,6 +16,7 @@ import CommonFunction from '../../core/interface/CommonFunction'
 import {ANSWER_LIST} from '../../core/constants/types'
 import UpdateAnswerDialog from './dialog/UpdateAnswerDialog'
 import HighLight from '../../components/txt/HighLight'
+import {getDateTimeStr} from '../../core/utils/dateUtils'
 
 interface AnswerListProps extends CommonFunction {
   fetchList: any
@@ -116,9 +117,9 @@ class AnswerList extends React.Component<AnswerListProps> {
                     <FixRow.Item>
                       <HighLight match={this.state.searchKey} txt={item['answerContent']}/>
                     </FixRow.Item>
-                    <FixRow.Item>{item['createTime']}</FixRow.Item>
-                    <FixRow.Item>{item['updateTime']}</FixRow.Item>
-                    <FixRow.Item>{item['remark']}</FixRow.Item>
+                    <FixRow.Item>{getDateTimeStr(item['createTime'])}</FixRow.Item>
+                    <FixRow.Item>{getDateTimeStr(item['updateTime'])}</FixRow.Item>
+                    <FixRow.Item>{getDateTimeStr(item['remark'])}</FixRow.Item>
                   </FixRow>
                 )
               })
