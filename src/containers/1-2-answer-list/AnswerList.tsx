@@ -17,6 +17,7 @@ import {ANSWER_LIST} from '../../core/constants/types'
 import UpdateAnswerDialog from './dialog/UpdateAnswerDialog'
 import HighLight from '../../components/txt/HighLight'
 import {getDateTimeStr} from '../../core/utils/dateUtils'
+import {limitTxt} from '../../core/utils/common'
 
 interface AnswerListProps extends CommonFunction {
   fetchList: any
@@ -91,7 +92,7 @@ class AnswerList extends React.Component<AnswerListProps> {
           <button className="btn" disabled={this.state.index == -1} onClick={() => this.setState({showEdit: true})}>查看</button>
           <div className="pull-right">
             <SearchBox
-              placeholder="请输入回答关键字"
+              placeholder="请输入问题或回答的关键字"
               value={this.state.searchKey} onChange={v => this.setState({searchKey: v})} search={() => this.toPage(0)}/>
           </div>
         </div>
@@ -115,11 +116,11 @@ class AnswerList extends React.Component<AnswerListProps> {
                       <HighLight match={this.state.searchKey} txt={item['questionContent']}/>
                     </FixRow.Item>
                     <FixRow.Item>
-                      <HighLight match={this.state.searchKey} txt={item['answerContent']}/>
+                      <HighLight match={this.state.searchKey} txt={limitTxt(item['answerContent'], 50, '...')}/>
                     </FixRow.Item>
                     <FixRow.Item>{getDateTimeStr(item['createTime'])}</FixRow.Item>
                     <FixRow.Item>{getDateTimeStr(item['updateTime'])}</FixRow.Item>
-                    <FixRow.Item>{getDateTimeStr(item['remark'])}</FixRow.Item>
+                    <FixRow.Item>{item['remark']}</FixRow.Item>
                   </FixRow>
                 )
               })

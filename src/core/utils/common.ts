@@ -57,3 +57,9 @@ export function getMoneyText(value) {
   }
   return result
 }
+
+export function limitTxt(str, limit, subfix = '') {
+  if (!str) return ''
+  if (str.length <= limit) return str
+  return str.substr(0, 50) + subfix
+}

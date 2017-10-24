@@ -8,6 +8,7 @@ import LimitTextArea from 'wj-appcore/form/limit/LimitTextArea'
 import Form from 'wj-appcore/form/Form'
 import Confirm from 'wj-appcore/common/Confirm'
 import ConfirmOrClose from 'wj-appcore/common/ConfirmOrClose'
+import {getDateTimeStr} from '../../../core/utils/dateUtils'
 
 interface UpdateAnswerDialogProps {
   answerInfo: any
@@ -18,6 +19,8 @@ interface UpdateAnswerDialogProps {
 
 class UpdateAnswerDialog extends React.Component<UpdateAnswerDialogProps> {
   answerId: string
+  createDateTime: string
+  updateDateTime: string
   state = {
     show: true,
     showAddConfirm: false,
@@ -42,6 +45,8 @@ class UpdateAnswerDialog extends React.Component<UpdateAnswerDialogProps> {
 
   componentWillMount() {
     this.answerId = this.props.answerInfo['answerId']
+    this.createDateTime = getDateTimeStr(this.props.answerInfo['createTime'])
+    this.updateDateTime = getDateTimeStr(this.props.answerInfo['updateTime'])
     this.setState({
       question: this.props.answerInfo['questionContent'] || '',
       answer: this.props.answerInfo['answerContent'] || '',
@@ -75,7 +80,7 @@ class UpdateAnswerDialog extends React.Component<UpdateAnswerDialogProps> {
               <label>问题</label>
               <Part>
                 <LimitTextArea
-                  required={true} rows={5} name="question" placeholder="请输入问题" limit={50} onExceed={() => null}
+                  required={true} rows={5} name="question" placeholder="必填，最多不超过50字" limit={50} onExceed={() => null}
                   value={this.state.question} onChange={e => this.setState({question: e.target.value})}
                 />
               </Part>
@@ -87,7 +92,7 @@ class UpdateAnswerDialog extends React.Component<UpdateAnswerDialogProps> {
               <label>回答</label>
               <Part>
                 <LimitTextArea
-                  rows={5} required={true} limit={200} name="answer" placeholder="请输入回答" onExceed={() => null}
+                  rows={5} required={true} limit={200} name="answer" placeholder="必填，最多不超过200字" onExceed={() => null}
                   value={this.state.answer} onChange={e => this.setState({answer: e.target.value})}/>
               </Part>
             </Row>
@@ -97,15 +102,20 @@ class UpdateAnswerDialog extends React.Component<UpdateAnswerDialogProps> {
               <label>备注</label>
               <Part>
                 <LimitTextArea
-                  rows={5} placeholder="请输入备注" limit={50} onExceed={() => null}
+                  rows={5} placeholder="选填" limit={50} onExceed={() => null}
                   value={this.state.remark} onChange={e => this.setState({remark: e.target.value})}/>
               </Part>
             </Row>
           </Form>
+
+          <div>
+            <span>发布时间：{this.createDateTime}</span>
+            <span className="ml15">更新时间：{this.updateDateTime}</span>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <ConfirmOrClose
-            disabled={!this.state.question || !this.state.answer}
+            disabled={!this.state.valid || this.state.remark.length > 50}
             onCancel={this.close}
             onConfirm={() => this.setState({showAddConfirm: true})}
           />

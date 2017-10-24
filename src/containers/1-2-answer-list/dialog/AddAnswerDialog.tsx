@@ -63,7 +63,7 @@ class AddAnswerDialog extends React.Component<AddAnswerDialogProps> {
               <label>问题</label>
               <Part>
                 <LimitTextArea
-                  required={true} rows={5} name="question" placeholder="请输入问题" limit={50} onExceed={() => null}
+                  required={true} rows={5} name="question" placeholder="必填，最多不超过50字" limit={50} onExceed={() => null}
                   value={this.state.question} onChange={e => this.setState({question: e.target.value})}
                 />
               </Part>
@@ -75,7 +75,7 @@ class AddAnswerDialog extends React.Component<AddAnswerDialogProps> {
               <label>回答</label>
               <Part>
                 <LimitTextArea
-                  rows={5} required={true} limit={200} name="answer" placeholder="请输入回答" onExceed={() => null}
+                  rows={5} required={true} limit={200} name="answer" placeholder="必填，最多不超过200字" onExceed={() => null}
                   value={this.state.answer} onChange={e => this.setState({answer: e.target.value})}/>
               </Part>
             </Row>
@@ -85,7 +85,7 @@ class AddAnswerDialog extends React.Component<AddAnswerDialogProps> {
               <label>备注</label>
               <Part>
                 <LimitTextArea
-                  rows={5} placeholder="请输入备注" limit={50} onExceed={() => null}
+                  rows={5} placeholder="选填" limit={50} onExceed={() => null}
                   value={this.state.remark} onChange={e => this.setState({remark: e.target.value})}/>
               </Part>
             </Row>
@@ -93,7 +93,7 @@ class AddAnswerDialog extends React.Component<AddAnswerDialogProps> {
         </Modal.Body>
         <Modal.Footer>
           <ConfirmOrClose
-            disabled={!this.state.valid}
+            disabled={!this.state.valid || this.state.remark.length > 50}
             onCancel={this.close}
             onConfirm={() => this.setState({showAddConfirm: true})}
           />
